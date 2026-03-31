@@ -1,1 +1,1 @@
-this is amodern register form
+this is a modern register form
