@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Theme Toggle -->
+<div class="toggle" onclick="toggleTheme()">🌙</div>
+
+<div class="container">
+  <h1>Register</h1>
+
+  <div class="input-box">
+    <input type="text" placeholder="Full Name">
+  </div>
+
+  <div class="input-box">
+    <input type="email" placeholder="Email">
+  </div>
+
+  <div class="input-box password-box">
+    <input type="password" id="password" placeholder="Password" oninput="checkStrength()">
+    <span onclick="togglePassword()">👁</span>
+    <div class="strength"><div id="bar"></div></div>
+  </div>
+
+  <!-- ✅ FIXED Gender Section -->
+  <div class="gender">
+    <p>Gender</p>
+    <div class="gender-options">
+      <label><input type="radio" name="g"> Male</label>
+      <label><input type="radio" name="g"> Female</label>
+      <label><input type="radio" name="g"> Other</label>
+    </div>
+  </div>
+
+  <div class="input-box">
+    <select>
+      <option>Course / Interest</option>
+      <option>Web Development</option>
+      <option>Design</option>
+      <option>AI</option>
+    </select>
+  </div>
+
+  <button onclick="showPopup()">Create Account</button>
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <h2>🎉 Success!</h2>
+  <p>Your account has been created</p>
+  <button onclick="closePopup()">OK</button>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle("dark");
+}
+
+function togglePassword(){
+  let pass = document.getElementById("password");
+  pass.type = pass.type === "password" ? "text" : "password";
+}
+
+function checkStrength(){
+  let val = document.getElementById("password").value;
+  let bar = document.getElementById("bar");
+
+  if(val.length < 4){
+    bar.style.width = "30%";
+  }
+  else if(val.length < 8){
+    bar.style.width = "60%";
+  }
+  else{
+    bar.style.width = "100%";
+  }
+}
+
+function showPopup(){
+  document.getElementById("popup").classList.add("active");
+}
+
+function closePopup(){
+  document.getElementById("popup").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
